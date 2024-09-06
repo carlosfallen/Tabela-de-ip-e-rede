@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "expres": "^0.0.5",
+    "express": "^4.19.2",
+    "express-basic-auth": "^1.2.1",
+    "express-session": "^1.18.0",
+    "git": "^0.1.5",
+    "json2csv": "^6.0.0-alpha.2",
+    "jsonwebtoken": "^9.0.2",
+    "ping": "^0.4.4",
+    "sqlite3": "^5.1.7"
+  }
+}

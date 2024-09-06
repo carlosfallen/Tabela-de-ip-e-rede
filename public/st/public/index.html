@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispositivos da Rede</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            z-index: 1000;
+            text-align: center;
+        }
+        #loadingScreen.hidden {
+            display: none;
+        }
+        #devicesTable{
+            opacity: 0;
+        }
+        #devicesTable.show{
+            opacity: 1;
+        }
+        table {
+            width: 96%;
+            border-collapse: collapse;
+            margin: 20px 2%;
+        }
+        th{
+            color:#fff;
+            background-color: #333;
+            border-radius: 20px;
+            border: #fff;
+        }
+        th, td {
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .offline {
+            color: red;
+        }
+        .online {
+            color: green;
+        }
+        a {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            padding: 10px 20px;
+            font-size: 1vw;
+            border: none;
+            border-radius: 1vw;
+            background-color: #007bff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: white;
+            text-decoration: none;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loadingScreen">
+        <div>
+            <div id="countdown">29s</div>
+            <p>Carregando, por favor, aguarde...</p>
+        </div>
+    </div>
+    
+    <table id="devicesTable">
+        <thead>
+            <tr>
+                <th>IP</th>
+                <th>Nome</th>
+                <th>MAC</th>
+                <th>Fabricante</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <a href="http://10.0.11.150/">Voltar</a>
+    </table>
+
+    <script>
+        const ws = new WebSocket('ws://localhost:444');
+        const loadingScreen = document.getElementById('loadingScreen');
+        const devicesTable = document.getElementById('devicesTable');
+        const countdown = document.getElementById('countdown');
+        let countdownValue = 29;
+
+        // Função para atualizar a contagem regressiva
+        function updateCountdown() {
+            countdown.innerText = `${countdownValue}s`;
+            if (countdownValue > 0) {
+                countdownValue--;
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+
+        updateCountdown();
+
+        ws.onmessage = (event) => {
+            const devices = JSON.parse(event.data);
+            const tableBody = document.querySelector('#devicesTable tbody');
+            tableBody.innerHTML = '';  // Limpa o conteúdo existente
+
+            Object.values(devices).forEach(device => {
+                const row = document.createElement('tr');
+                row.className = device.Ligado === 'Sim' ? 'online' : 'offline';  // Define a classe com base no status
+
+                row.innerHTML = `
+                    <td>${device.IP}</td>
+                    <td>${device.Nome}</td>
+                    <td>${device.MAC}</td>
+                    <td>${device.Fabricante}</td>
+                    <td>${device.Ligado}</td>
+                `;
+
+                tableBody.appendChild(row);
+            });
+
+            loadingScreen.classList.add('hidden');  // Oculta a tela de carregamento
+            devicesTable.classList.add('show');  // Oculta a tela de carregamento
+        };
+
+        ws.onerror = (error) => {
+            console.error('WebSocket Error:', error);
+            loadingScreen.classList.add('hidden');  // Oculta a tela de carregamento em caso de erro
+        };
+    </script>
+</body>
+</html>

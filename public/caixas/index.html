@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Caixas</title>
+    <link rel="stylesheet" href="/public/css/caixas.css">
+</head>
+<body>
+    <div class="bar">
+        <button id="logoutButton">Sair</button>
+        <button><a href="/public/home/">Voltar</a></button>
+        <button><a href="/public/router/">Router</a></button>
+    </div>
+    <div class="container">
+        <h1>Seleção de Caixas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ok</th>
+                    <th>Caixa</th>
+                    <th>IP</th>
+                </tr>
+            </thead>
+            <tbody id="caixa-list">
+                <!-- Linhas serão inseridas aqui pelo JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    <script src="/public/js/logout.js"></script>
+    <script src="/public/js/caixas.js"></script>
+</body>
+</html>
