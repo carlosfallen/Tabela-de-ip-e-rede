@@ -76,7 +76,7 @@ app.post('/logout', (req, res) => {
 app.post('/login', express.json(), (req, res) => {
     try {
         const { username, password } = req.body;
-        if (username === 'jorge' && password === 'jbatistasjs') {
+        if (username === 'admin' && password === 'admin') {
             req.session.user = username;
             res.json({ success: true, redirect: '/home' });
         } else {
