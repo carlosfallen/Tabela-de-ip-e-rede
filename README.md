@@ -51,4 +51,3 @@ Este projeto é uma aplicação web para gerenciamento de endereços IP e dispos
 
 - **Alterações Recentes**: Houve mudanças recentes na forma de armazenamento dos dados. Portanto, pode haver problemas com o funcionamento da seção `st`, que lida com o **mac.js** e informações mais detalhadas dos dispositivos.
 - **Dependências**: Algumas bibliotecas necessárias para o funcionamento do projeto não estão disponíveis no **npm**. Certifique-se de verificar e instalar manualmente.
-```
