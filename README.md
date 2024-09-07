@@ -53,4 +53,18 @@ Este projeto é uma aplicação web para gerenciamento de endereços IP e dispos
 - **Dependências**: Algumas bibliotecas necessárias para o funcionamento do projeto não estão disponíveis no **npm**. Certifique-se de verificar e instalar manualmente.
 - **Resumindo**: Em breve estarei concluindo, deixando as bibliotecas no github e a lista das dependeçias necessárias, exemplos de uso do todo e instalação mais simples.
 
-## 
+## Apoie o projeto
+
+<table>
+  <tr>
+    <td>
+      <img src="https://drive.google.com/uc?id=1cjMuiPgHdE2FLmuQOTReHbNDKsg_n-W9" alt="PIX" width="200" />
+      <p align="center">PIX</p>
+    </td>
+    <td>
+      <img src="https://drive.google.com/uc?id=1vnRZ5s-_X5ohWGAszQScD4uZgjTWXa2R" alt="BTC" width="200" />
+      <p align="center">BTC</p>
+    </td>
+  </tr>
+</table>
+
