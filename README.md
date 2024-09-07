@@ -53,4 +53,4 @@ Este projeto é uma aplicação web para gerenciamento de endereços IP e dispos
 - **Dependências**: Algumas bibliotecas necessárias para o funcionamento do projeto não estão disponíveis no **npm**. Certifique-se de verificar e instalar manualmente.
 - **Resumindo**: Em breve estarei concluindo, deixando as bibliotecas no github e a lista das dependeçias necessárias, exemplos de uso do todo e instalação mais simples.
 
-- 
+## 
